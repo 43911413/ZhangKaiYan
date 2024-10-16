@@ -3,6 +3,7 @@ import router from '@ohos.router'
 /**
  * 欢迎页
  * */
+
 @Entry
 @Component
 struct SplashPage {
