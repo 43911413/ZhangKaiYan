@@ -3,6 +3,7 @@
  * 路由表管理
  * */
 export class RoutePath{
+  //测试
   static readonly SplashPage = 'pages/SplashPage'
   static readonly MainPage = 'pages/MainPage'
   static readonly CategoryPage = 'pages/CategoryPage'
