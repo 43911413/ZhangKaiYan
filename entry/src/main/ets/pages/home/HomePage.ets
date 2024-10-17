@@ -1,20 +1,25 @@
+import { ViewStateConstant } from "../../constants/ViewStateConstant"
+import { HomeModelIssueListItemList } from "../../model/HomeModel"
+import { LogUtils } from "../../utils/LogUtils"
+
+/**
+ * 首页
+ * */
 @Entry
 @Component
 export struct HomePage {
-  @State message: string = '首页';
-
+  @State viewState:string = ViewStateConstant.VIEW_STATE_LOADING
+  @State isRefreshing:boolean = false
+  @State dataList :HomeModelIssueListItemList[] = []
+  @State showLoading:boolean = false
+  @Consume @Watch('onTabSelected') homeTabSelected :number
   build() {
-    RelativeContainer() {
-      Text(this.message)
-        .id('HomePageHelloWorld')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
-    }
-    .height('100%')
-    .width('100%')
+
   }
+
+  onTabSelected() {
+    LogUtils.debug('onTabSelected>>>',`${this.homeTabSelected}`)
+  }
+
+
 }
