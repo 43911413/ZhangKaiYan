@@ -1,9 +1,9 @@
 import { getHomeListAxios } from '../http/ApiServers';
+import axiosClient from '../http/AxiosRequest';
 import { HomeModelIssueListItemList } from '../model/HomeModel';
 import { BaseViewModel, ResultCallback } from './BaseViewModel';
 
 export class HomeViewModel extends BaseViewModel {
-
 
   /**
    * 获取首页列表数据-axios客户端请求
@@ -11,21 +11,20 @@ export class HomeViewModel extends BaseViewModel {
    * @param resultCallback  结果返回
    */
   async getHomeList(resultCallback?: ResultCallback<HomeModelIssueListItemList[]>) {
-    await this.httpRequest()
-      .promise(getHomeListAxios())
-      .then(result => {
-        let items = result.issueList[0].itemList
-        let list = items.filter((item) => item.type == "video")
-        let bannerList: HomeModelIssueListItemList[]
-        let bannerBean: HomeModelIssueListItemList = {}
-        bannerList = items.filter((item) => item.type == "banner2")
-        if (bannerList.length > 0) {
-          bannerBean = { bannerList: bannerList, type: "banner" }
-          list.unshift(bannerBean)
-        }
-        resultCallback?.(list)
-        this.spliteDate(result.nextPageUrl)
-      })
+    await this.httpRequest(getHomeListAxios()).then(result => {
+      let items = result.issueList[0].itemList
+      let list = items.filter((item) => item.type == "video")
+
+      let bannerList: HomeModelIssueListItemList[]
+      let bannerBean: HomeModelIssueListItemList = {}
+      bannerList = items.filter((item) => item.type == "banner2")
+      if (bannerList.length > 0) {
+        bannerBean = { bannerList: bannerList, type: "banner" }
+        list.unshift(bannerBean)
+      }
+      resultCallback?.(list)
+      this.spliteDate(result.nextPageUrl)
+    })
   }
 
 
