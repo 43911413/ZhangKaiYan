@@ -15,11 +15,11 @@ export struct StateComponent{
   build(){
     Stack(){
       Stack(){
-        if (this.viewState != ViewStateConstant.VIEW_STATE_SUCCESS){
-          this.holdContent()
-        }else {
-          this.viewContent()
-        }
+        // if (this.viewState != ViewStateConstant.VIEW_STATE_SUCCESS){
+        //   this.holdContent()
+        // }else {
+        //   this.viewContent()
+        // }
       }
     }
   }
