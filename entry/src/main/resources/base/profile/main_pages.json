@@ -6,6 +6,8 @@
     "pages/find/FindPage",
     "pages/hot/HotPage",
     "pages/mine/MinePage",
-    "pages/commonDetail/DetailPage"
+    "pages/commonDetail/DetailPage",
+    "pages/hot/CoordinatePage",
+    "pages/hot/rank/RankPage"
   ]
 }
